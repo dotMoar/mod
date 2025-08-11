@@ -1,0 +1,24 @@
+#gradle stuff
+/gradlew
+/gradlew.bat
+/gradle
+/.gradle
+
+# compiled files
+/build
+/run
+
+# Mac filesystem dust
+/.DS_Store
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea
+
+
+
+
+# Do not commit generated resources
+/src/generated/
