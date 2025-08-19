@@ -2,6 +2,7 @@ package dev.moar.astralresorcery.helper.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Axis;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 
@@ -105,5 +106,62 @@ public class Quad {
                 .overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light).normal(normal, 0, 0, 1).endVertex();
         v.vertex(pose, -hw, +hh, 0).color(c.r, c.g, c.b, c.a).uv(u0, v1)
                 .overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light).normal(normal, 0, 0, 1).endVertex();
+    }
+
+    public static void emitCubeDoubleSided(PoseStack ps, VertexConsumer vc, Quad.Color color, float size) {
+        float half = size / 2f;
+
+        // === Z+ (frente) ===
+        ps.pushPose();
+        ps.translate(0, 0, half);
+        Quad.emitQuadCentered(ps, vc, Quad.FULL_BRIGHT, color, size, size); // exterior
+        ps.mulPose(Axis.YP.rotationDegrees(180));
+        Quad.emitQuadCentered(ps, vc, Quad.FULL_BRIGHT, color, size, size); // interior
+        ps.popPose();
+
+        // === Z- (atrás) ===
+        ps.pushPose();
+        ps.translate(0, 0, -half);
+        ps.mulPose(Axis.YP.rotationDegrees(180));
+        Quad.emitQuadCentered(ps, vc, Quad.FULL_BRIGHT, color, size, size); // exterior
+        ps.mulPose(Axis.YP.rotationDegrees(180));
+        Quad.emitQuadCentered(ps, vc, Quad.FULL_BRIGHT, color, size, size); // interior
+        ps.popPose();
+
+        // === X+ (derecha) ===
+        ps.pushPose();
+        ps.mulPose(Axis.YP.rotationDegrees(90));
+        ps.translate(0, 0, half);
+        Quad.emitQuadCentered(ps, vc, Quad.FULL_BRIGHT, color, size, size); // exterior
+        ps.mulPose(Axis.YP.rotationDegrees(180));
+        Quad.emitQuadCentered(ps, vc, Quad.FULL_BRIGHT, color, size, size); // interior
+        ps.popPose();
+
+        // === X- (izquierda) ===
+        ps.pushPose();
+        ps.mulPose(Axis.YP.rotationDegrees(-90));
+        ps.translate(0, 0, half);
+        Quad.emitQuadCentered(ps, vc, Quad.FULL_BRIGHT, color, size, size); // exterior
+        ps.mulPose(Axis.YP.rotationDegrees(180));
+        Quad.emitQuadCentered(ps, vc, Quad.FULL_BRIGHT, color, size, size); // interior
+        ps.popPose();
+
+        // === Y+ (arriba) ===
+        ps.pushPose();
+        ps.mulPose(Axis.XP.rotationDegrees(-90));
+        ps.translate(0, 0, half);
+        Quad.emitQuadCentered(ps, vc, Quad.FULL_BRIGHT, color, size, size); // exterior
+        ps.mulPose(Axis.YP.rotationDegrees(180));
+        Quad.emitQuadCentered(ps, vc, Quad.FULL_BRIGHT, color, size, size); // interior
+        ps.popPose();
+
+        // === Y- (abajo) ===
+        ps.pushPose();
+        ps.mulPose(Axis.XP.rotationDegrees(90));
+        ps.translate(0, 0, half);
+        Quad.emitQuadCentered(ps, vc, Quad.FULL_BRIGHT, color, size, size); // exterior
+        ps.mulPose(Axis.YP.rotationDegrees(180));
+        Quad.emitQuadCentered(ps, vc, Quad.FULL_BRIGHT, color, size, size); // interior
+        ps.popPose();
     }
 }

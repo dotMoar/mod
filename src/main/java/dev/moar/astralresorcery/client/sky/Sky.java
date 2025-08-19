@@ -1,7 +1,5 @@
 package dev.moar.astralresorcery.client.sky;
 
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
 import com.mojang.math.Axis;
 import dev.moar.astralresorcery.AstralReSorcery;
@@ -9,10 +7,7 @@ import dev.moar.astralresorcery.helper.render.Billboards;
 import dev.moar.astralresorcery.helper.render.Hud;
 import dev.moar.astralresorcery.helper.render.Quad;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.texture.AbstractTexture;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
@@ -30,78 +25,20 @@ public class Sky {
     private static final ResourceLocation SUN_TEX = ResourceLocation.withDefaultNamespace("textures/environment/sun.png");
     private static final ResourceLocation MOON_TEX = ResourceLocation.withDefaultNamespace("textures/environment/moon_phases.png");
 
-    /**
-     * RADIO
-     **/
     private static final float R = 3f;
-    /**
-     * SIZE
-     **/
     private static final float S = 2f;
-    /**
-     * SUN SPRITE FILTER
-     **/
     private static final float SUN_EPS = 1f / 16f;
-    /**
-     * MOON SPRITE FILTER
-     **/
     private static final float MOON_EPS_U = 1f / 64f;
-    /**
-     * MOON SPRITE V FILTER
-     **/
     private static final float MOON_EPS_V = 1f / 32f;
-    /**
-     * ROTATION SPEED DEBUG
-     **/
-    private static final float SPEED_MULT = 200f; // “luna nueva rápida”
-    /**
-     * DEG SUN ECLIPSE TOLENCE
-     **/
-    private static final float ECLIPSE_TOL = 5f; // entra
-    /**
-     * DEG SUN ECLIPSE AFTER RESET
-     **/
-    private static final float ECLIPSE_RESET = 8f; // sale
-    /**
-     * DARKNESS ECLIPSE MIN
-     **/
-    private static final float MIN_LIGHT = 0.05f;  // nunca negro total
-    /**
-     * SIZE OVERLAY DARKNESS
-     **/
-    private static final float OVERLAY_SIZE = 5000f; // quad gigante frente a cámara
-    /**
-     *
-     **/
+    private static final float SPEED_MULT = 200f;
+    private static final float ECLIPSE_TOL = 5f;
+    private static final float ECLIPSE_RESET = 8f;
+    private static final float MIN_LIGHT = 0.05f;
+    private static final float OVERLAY_SIZE = 5000f;
     private static boolean eclipse = false;
-    /**
-     *
-     **/
     private static float lastDiff = 999f;
-    /**
-     *
-     **/
-    private static boolean DEBUG_HUD = true;   // toggle HUD
-    /**
-     *
-     **/
-    private static boolean FOG_HOOK = true;   // aplicar hook de fog/sky color
-    /**
-     *
-     **/
-    private static float overlayStrengthBias = 1.0f; // 1=normal, >1 más oscuro, <1 más suave
-
-    public static void setDebugHud(boolean enable) {
-        DEBUG_HUD = enable;
-    }
-
-    public static void setFogHookEnabled(boolean enable) {
-        FOG_HOOK = enable;
-    }
-
-    public static void setOverlayStrength(float bias) {
-        overlayStrengthBias = Math.max(0f, bias);
-    }
+    private static final boolean FOG_HOOK = true;
+    private static final float overlayStrengthBias = 1.0f;
 
     @SubscribeEvent
     public static void render(RenderLevelStageEvent e) {
@@ -156,13 +93,15 @@ public class Sky {
         drawBlackMoonObject(ps, mc, S - 1f, uv.u0, uv.v0, uv.u1, uv.v1, -0.001f, diff);
         ps.popPose();
 
-        if (DEBUG_HUD) {
-            Hud.renderHudLine(ps, cam, "Sky: " + sky, 0, CX, CY, CZ);
-            Hud.renderHudLine(ps, cam, "Sun°: " + sunDeg, 1, CX, CY, CZ);
-            Hud.renderHudLine(ps, cam, "Moon°: " + moonDeg, 2, CX, CY, CZ);
-            Hud.renderHudLine(ps, cam, "NewMoon°: " + newMoonDeg, 3, CX, CY, CZ);
-            Hud.renderHudLine(ps, cam, "Eclipse=" + eclipse + " diff=" + diff, 4, CX, CY, CZ);
-        }
+
+        renderDebugDarkBox(ps, mc);
+
+        Hud.renderHudLine(ps, cam, "Sky: " + sky, 0, CX, CY, CZ);
+        Hud.renderHudLine(ps, cam, "Sun°: " + sunDeg, 1, CX, CY, CZ);
+        Hud.renderHudLine(ps, cam, "Moon°: " + moonDeg, 2, CX, CY, CZ);
+        Hud.renderHudLine(ps, cam, "NewMoon°: " + newMoonDeg, 3, CX, CY, CZ);
+        Hud.renderHudLine(ps, cam, "Eclipse=" + eclipse + " diff=" + diff, 4, CX, CY, CZ);
+
 
         applyDarkeningOverlay(ps, mc, pt, eclipse, diff);
     }
@@ -263,19 +202,38 @@ public class Sky {
             ps.translate(0.0, 0.0, zOffsetTowardsCamera);
         }
 
-        // Calcula opacidad en base a la cercanía del centro del eclipse
         float perc = computeAstralPerc(diffDeg); // 1.0 = sin eclipse, MIN_LIGHT = máximo eclipse
         float alpha = Math.max(0f, Math.min(1f, 1f - perc)); // 0 → invisible, 1 → negro sólido
 
         int a255 = Math.round(alpha * 255f);
 
-        Quad.emitQuadCenteredUV(ps, vc, Quad.FULL_BRIGHT,
-                new Quad.Color(0, 0, 0, a255), // negro con alpha dinámico
+        Quad.emitQuadCenteredUV(ps, vc, Quad.FULL_BRIGHT, new Quad.Color(0, 0, 0, a255), // negro con alpha dinámico
                 size, size, u0, v0, u1, v1);
 
         buffers.endBatch(RenderType.entityTranslucentCull(MOON_TEX));
         if (zOffsetTowardsCamera != 0f) {
-            ps.translate(0.0, 0.0 , zOffsetTowardsCamera);
+            ps.translate(0.0, 0.0, zOffsetTowardsCamera);
         }
+    }
+
+    private static void renderDebugDarkBox(PoseStack ps, Minecraft mc) {
+        var buffers = mc.renderBuffers().bufferSource();
+        VertexConsumer vc = buffers.getBuffer(RenderType.guiOverlay());
+
+        float size = 3.0f; // 3x3x3
+        int a255 = 180;    // semitransparente
+        Quad.Color color = new Quad.Color(0, 0, 0, a255);
+
+        ps.pushPose();
+        // Posición en el mundo
+        double wx = 8.0; double wy = -52.0; double wz = 5.0;
+        var cam = mc.gameRenderer.getMainCamera().getPosition();
+        ps.translate(wx - cam.x, wy - cam.y, wz - cam.z);
+
+        // seis caras
+        Quad.emitCubeDoubleSided(ps, vc, new Quad.Color(0, 0, 0, 180), 3f);
+
+        ps.popPose();
+        buffers.endBatch(RenderType.guiOverlay());
     }
 }
