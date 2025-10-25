@@ -2,6 +2,7 @@ package dev._83080441.skyrain;
 
 import dev._83080441.skyrain.block.ModBlocks;
 import dev._83080441.skyrain.item.ModItems;
+import dev._83080441.skyrain.ui.tabs.CreativeTabs;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import org.slf4j.Logger;
@@ -31,6 +32,8 @@ public class SkyRain {
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+
+        CreativeTabs.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
