@@ -24,12 +24,16 @@ public class CreativeTabs {
                     .title(Component.translatable("creativetab.skyrain.sky"))
                     .displayItems((itemDisplayParameters , output) ->{
                         output.accept(ModItems.DAGGER);
+                        output.accept(ModItems.CINNABAR_ORE);
+                        output.accept(ModItems.QUICKSILVER);
+
                         output.accept(ModBlocks.MONOLITH);
+                        output.accept(ModBlocks.CINNABAR_BLOCK);
                     })
                     .build()
     );
 
     public static void register(IEventBus bus) {
-        CreativeTabs.register(bus);
+        CREATIVE_TAB.register(bus);
     }
 }

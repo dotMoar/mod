@@ -1,4 +1,10 @@
 {
   "item.skyrain.dagger" : "Dagger",
-  "block.skyrain.monolith" : "Monolith"
+  "item.skyrain.cinnabar_ore" : "Cinnabar Ore",
+  "item.skyrain.quicksilver" : "Quicksilver",
+
+  "block.skyrain.monolith" : "Monolith",
+  "item.skyrain.cinnabar_block" : "Cinnabar Block",
+
+  "creativetab.skyrain.sky": "SkyRain Items"
 }

@@ -8,7 +8,11 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(SkyRain.MOD_ID);
+
+    public static final DeferredItem<Item> CINNABAR_ORE = ITEMS.register("cinnabar_ore", () -> new Item(new Item.Properties()));
+
     public static final DeferredItem<Item> DAGGER = ITEMS.register("dagger", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> QUICKSILVER = ITEMS.register("quicksilver", () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus bus) {
         ITEMS.register(bus);

@@ -44,13 +44,13 @@ public class SkyRain {
 
     // Crea pestana de tab y registra los items!
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItems.DAGGER);
-        }
-
-        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
-            event.accept(ModBlocks.MONOLITH);
-        }
+    //        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+    //            event.accept(ModItems.DAGGER);
+    //        }
+    //
+    //        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+    //            event.accept(ModBlocks.MONOLITH);
+    //        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
