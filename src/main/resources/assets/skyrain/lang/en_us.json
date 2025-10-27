@@ -2,9 +2,12 @@
   "item.skyrain.dagger" : "Dagger",
   "item.skyrain.cinnabar_ore" : "Cinnabar Ore",
   "item.skyrain.quicksilver" : "Quicksilver",
+  "item.skyrain.cinnabar_block" : "Cinnabar Block",
+  "item.skyrain.wand" : "Wand",
+  "item.skyrain.radish" : "Radish",
 
   "block.skyrain.monolith" : "Monolith",
-  "item.skyrain.cinnabar_block" : "Cinnabar Block",
+  "block.skryrain.magic_block" : "Magic Block",
 
   "creativetab.skyrain.sky": "SkyRain Items"
 }

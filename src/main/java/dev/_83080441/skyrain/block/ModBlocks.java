@@ -1,6 +1,7 @@
 package dev._83080441.skyrain.block;
 
 import dev._83080441.skyrain.SkyRain;
+import dev._83080441.skyrain.block.custom.MagicBlock;
 import dev._83080441.skyrain.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -29,12 +30,18 @@ public class ModBlocks {
             ));
 
     public static final DeferredBlock<Block> CINNABAR_BLOCK = registerBlock("cinnabar_block",
-            () -> new DropExperienceBlock(UniformInt.of(1,10),
-                    BlockBehaviour.Properties
-                            .of()
-                            .strength(4f)
-                            .requiresCorrectToolForDrops()
-                            .sound(SoundType.STONE)
+            () -> new Block(BlockBehaviour.Properties
+                    .of()
+                    .strength(3f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.STONE)
+            ));
+
+    public static final DeferredBlock<Block> MAGIC_BLOCK = registerBlock("magic_block",
+            () -> new MagicBlock(BlockBehaviour.Properties
+                    .of()
+                    .strength(1f)
+                    .sound(SoundType.STONE)
             ));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {

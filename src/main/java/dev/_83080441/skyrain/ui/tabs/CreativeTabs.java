@@ -26,8 +26,13 @@ public class CreativeTabs {
                         output.accept(ModItems.DAGGER);
                         output.accept(ModItems.CINNABAR_ORE);
                         output.accept(ModItems.QUICKSILVER);
+                        output.accept(ModItems.WAND);
+
+                        output.accept(ModItems.RADISH);
+
 
                         output.accept(ModBlocks.MONOLITH);
+                        output.accept(ModBlocks.MAGIC_BLOCK);
                         output.accept(ModBlocks.CINNABAR_BLOCK);
                     })
                     .build()
