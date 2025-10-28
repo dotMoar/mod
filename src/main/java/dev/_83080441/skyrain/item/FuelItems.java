@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Nullable;
 public class FuelItems extends Item {
     private int burnTime = 0;
 
-    public FuelItems(Properties properties) {
+    public FuelItems(Properties properties, int burnTime) {
         super(properties);
         this.burnTime = burnTime;
     }

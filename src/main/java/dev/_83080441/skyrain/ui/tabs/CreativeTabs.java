@@ -30,6 +30,8 @@ public class CreativeTabs {
 
                         output.accept(ModItems.RADISH);
 
+                        output.accept(ModItems.FROST_FIRE);
+                        output.accept(ModItems.STARLIGHT_ASHES);
 
                         output.accept(ModBlocks.MONOLITH);
                         output.accept(ModBlocks.MAGIC_BLOCK);

@@ -6,8 +6,16 @@
   "item.skyrain.wand" : "Wand",
   "item.skyrain.radish" : "Radish",
 
-  "block.skyrain.monolith" : "Monolith",
-  "block.skryrain.magic_block" : "Magic Block",
+  "item.skyrain.frost_fire" : "Frost Fire",
+  "item.skyrain.starlight_ashes" : "Starlight Ashes",
 
-  "creativetab.skyrain.sky": "SkyRain Items"
+  "block.skyrain.monolith" : "Monolith",
+  "block.skyrain.magic_block" : "Magic Block",
+
+  "creativetab.skyrain.sky": "SkyRain Items",
+
+  "tooltip.skyrain.magic_block.tooltip": "thats a magic block",
+  "tooltip.skyrain.wand.shift_down": "Mas info",
+  "tooltip.skyrain.wand": "Shift info",
+  "tooltip.skyrain.radish": "Comidita yumi yumi"
 }
