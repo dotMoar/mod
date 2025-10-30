@@ -22,5 +22,11 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.CINNABAR_BLOCK.get());
 
+        tag(BlockTags.FENCES).add(ModBlocks.MONOLITH_FENCE.get());
+        tag(BlockTags.FENCE_GATES).add(ModBlocks.MONOLITH_FENCE_GATE.get());
+        tag(BlockTags.WALLS).add(ModBlocks.MONOLITH_WALL.get());
+
     }
+
+
 }

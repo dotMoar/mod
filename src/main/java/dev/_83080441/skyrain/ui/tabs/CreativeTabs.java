@@ -36,6 +36,19 @@ public class CreativeTabs {
                         output.accept(ModBlocks.MONOLITH);
                         output.accept(ModBlocks.MAGIC_BLOCK);
                         output.accept(ModBlocks.CINNABAR_BLOCK);
+
+
+                        output.accept(ModBlocks.MONOLITH_DOOR);
+                        output.accept(ModBlocks.MONOLITH_FENCE_GATE);
+                        output.accept(ModBlocks.MONOLITH_WALL);
+                        output.accept(ModBlocks.MONOLITH_TRAP_DOOR);
+                        output.accept(ModBlocks.MONOLITH_BUTTON);
+                        output.accept(ModBlocks.MONOLITH_FENCE);
+                        output.accept(ModBlocks.MONOLITH_PRESSURE);
+                        output.accept(ModBlocks.MONOLITH_STAIR);
+                        output.accept(ModBlocks.MONOLITH_SLAB);
+
+
                     })
                     .build()
     );

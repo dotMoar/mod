@@ -1,13 +1,11 @@
 package dev._83080441.skyrain.datagen;
 
-import dev._83080441.skyrain.SkyRain;
 import dev._83080441.skyrain.block.ModBlocks;
 import dev._83080441.skyrain.item.ModItems;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
-import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -31,7 +29,15 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     protected void generate() {
 
         dropSelf(ModBlocks.MAGIC_BLOCK.get());
+        dropSelf(ModBlocks.MONOLITH_BUTTON.get());
+        dropSelf(ModBlocks.MONOLITH_FENCE.get());
+        dropSelf(ModBlocks.MONOLITH_STAIR.get());
+        dropSelf(ModBlocks.MONOLITH_FENCE_GATE.get());
+        dropSelf(ModBlocks.MONOLITH_WALL.get());
+        dropSelf(ModBlocks.MONOLITH_PRESSURE.get());
 
+        add(ModBlocks.MONOLITH_SLAB.get(), (block) -> createSlabItemTable(ModBlocks.MONOLITH_SLAB.get()));
+        add(ModBlocks.MONOLITH_DOOR.get(), (block) -> createSlabItemTable(ModBlocks.MONOLITH_DOOR.get()));
 
         // Para la mena: suelta el ítem CINNABAR_ORE
         add(ModBlocks.CINNABAR_BLOCK.get(),

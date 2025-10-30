@@ -26,4 +26,6 @@ public class ModDataMapProvider extends DataMapProvider {
                 .add(ModItems.FROST_FIRE.getId(), new FurnaceFuel(1200), false)
                 .add(ModItems.FROST_FIRE.getId(), new FurnaceFuel(2400), false);
     }
+
+
 }

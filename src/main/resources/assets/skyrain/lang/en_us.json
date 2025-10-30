@@ -10,7 +10,16 @@
   "item.skyrain.starlight_ashes" : "Starlight Ashes",
 
   "block.skyrain.monolith" : "Monolith",
-  "block.skyrain.magic_block" : "Magic Block",
+  "block.skyrain.monolith_door" : "Monolith door",
+  "block.skyrain.monolith_fence_gate" : "Monolith fence gate",
+  "block.skyrain.monolith_wall" : "Monolith wall",
+  "block.skyrain.monolith_trap_door" : "Monolith trap door",
+  "block.skyrain.monolith_button" : "Monolith button",
+  "block.skyrain.monolith_fence" : "Monolith fence",
+  "block.skyrain.monolith_pressure" : "Monolith pressure",
+  "block.skyrain.monolith_stair" : "Monolith stair",
+  "block.skyrain.monolith_slab" : "Monolith slab",
+  "block.skyrain.magic_block" : "Magic Block block",
 
   "creativetab.skyrain.sky": "SkyRain Items",
 

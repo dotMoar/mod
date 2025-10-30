@@ -47,6 +47,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         oreSmelting(recipeOutput,CINNABAR_SMELTABLES, RecipeCategory.MISC, ModItems.QUICKSILVER.get(), 0.25f, 200, "quicksilver" );
         oreBlasting(recipeOutput,CINNABAR_SMELTABLES, RecipeCategory.MISC, ModItems.QUICKSILVER.get(), 0.25f, 100, "quicksilver" );
+
+        stairBuilder(ModBlocks.MONOLITH_STAIR.get(),Ingredient.of(ModItems.QUICKSILVER),  );
     }
 
     protected static void oreSmelting(@NotNull RecipeOutput recipeOutput, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult,
@@ -68,6 +70,4 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     .save(recipeOutput, SkyRain.MOD_ID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));
         }
     }
-
-
 }
