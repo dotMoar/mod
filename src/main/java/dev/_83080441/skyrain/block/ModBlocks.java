@@ -22,7 +22,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> MONOLITH = registerBlock("monolith",
             () -> new Block(BlockBehaviour.Properties
                     .of()
-                    .strength(-1.0F, 3600000.0F) // opcional si quieres reforzarlo
+                    .strength(-1.0F, 3600000.0F)
                     .noLootTable()
                     .requiresCorrectToolForDrops()
                     .explosionResistance(3600000.0F)
