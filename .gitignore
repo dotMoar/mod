@@ -23,4 +23,4 @@ run
 runs
 run-data
 
-src/generated/
+src/generated/*
