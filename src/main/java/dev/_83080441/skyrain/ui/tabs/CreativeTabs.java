@@ -23,7 +23,6 @@ public class CreativeTabs {
                     .icon(() -> new ItemStack(ModItems.DAGGER.get()))
                     .title(Component.translatable("creativetab.skyrain.sky"))
                     .displayItems((itemDisplayParameters , output) ->{
-                        output.accept(ModItems.DAGGER);
                         output.accept(ModItems.CINNABAR_ORE);
                         output.accept(ModItems.QUICKSILVER);
                         output.accept(ModItems.WAND);
@@ -41,13 +40,21 @@ public class CreativeTabs {
                         output.accept(ModBlocks.MONOLITH_DOOR);
                         output.accept(ModBlocks.MONOLITH_FENCE_GATE);
                         output.accept(ModBlocks.MONOLITH_WALL);
-                        output.accept(ModBlocks.MONOLITH_TRAP_DOOR);
+                        output.accept(ModBlocks.MONOLITH_TRAPDOOR);
                         output.accept(ModBlocks.MONOLITH_BUTTON);
                         output.accept(ModBlocks.MONOLITH_FENCE);
                         output.accept(ModBlocks.MONOLITH_PRESSURE);
                         output.accept(ModBlocks.MONOLITH_STAIR);
                         output.accept(ModBlocks.MONOLITH_SLAB);
 
+                        output.accept(ModBlocks.MONOLITH_LAMP);
+
+
+                        output.accept(ModItems.DAGGER);
+                        output.accept(ModItems.MONOLITH_AXE);
+                        output.accept(ModItems.MONOLITH_SHOVEL);
+                        output.accept(ModItems.MONOLITH_PICKAXE);
+                        output.accept(ModItems.MONOLITH_HOE);
 
                     })
                     .build()

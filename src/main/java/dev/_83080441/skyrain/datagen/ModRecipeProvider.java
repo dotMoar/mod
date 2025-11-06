@@ -48,7 +48,44 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreSmelting(recipeOutput,CINNABAR_SMELTABLES, RecipeCategory.MISC, ModItems.QUICKSILVER.get(), 0.25f, 200, "quicksilver" );
         oreBlasting(recipeOutput,CINNABAR_SMELTABLES, RecipeCategory.MISC, ModItems.QUICKSILVER.get(), 0.25f, 100, "quicksilver" );
 
-        stairBuilder(ModBlocks.MONOLITH_STAIR.get(),Ingredient.of(ModItems.QUICKSILVER),  );
+
+
+        slab(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MONOLITH_SLAB.get(), ModItems.QUICKSILVER.get());
+        wall(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MONOLITH_WALL.get(), ModItems.QUICKSILVER.get());
+
+        pressurePlate(recipeOutput, ModBlocks.MONOLITH_PRESSURE.get(), ModItems.QUICKSILVER.get());
+
+        stairBuilder(ModBlocks.MONOLITH_STAIR.get(),Ingredient.of(ModItems.QUICKSILVER))
+                .group("monolith")
+                .unlockedBy("has_monolith", has(ModItems.QUICKSILVER))
+                .save(recipeOutput);
+
+        buttonBuilder(ModBlocks.MONOLITH_BUTTON.get(), Ingredient.of(ModItems.QUICKSILVER.get()))
+                .group("monolith")
+                .unlockedBy("has_monolith", has(ModItems.QUICKSILVER))
+                .save(recipeOutput);
+
+        fenceBuilder(ModBlocks.MONOLITH_FENCE.get(), Ingredient.of(ModItems.QUICKSILVER.get()))
+                .group("monolith")
+                .unlockedBy("has_monolith", has(ModItems.QUICKSILVER))
+                .save(recipeOutput);
+
+        fenceGateBuilder(ModBlocks.MONOLITH_FENCE_GATE.get(), Ingredient.of(ModItems.QUICKSILVER.get()))
+                .group("monolith")
+                .unlockedBy("has_monolith", has(ModItems.QUICKSILVER))
+                .save(recipeOutput);
+
+
+        doorBuilder(ModBlocks.MONOLITH_DOOR.get(), Ingredient.of(ModItems.QUICKSILVER.get()))
+                .group("monolith")
+                .unlockedBy("has_monolith", has(ModItems.QUICKSILVER.get()))
+                .save(recipeOutput);
+
+        trapdoorBuilder(ModBlocks.MONOLITH_TRAPDOOR.get(), Ingredient.of(ModItems.QUICKSILVER.get()))
+                .group("monolith")
+                .unlockedBy("has_monolith", has(ModItems.QUICKSILVER))
+                .save(recipeOutput);
+
     }
 
     protected static void oreSmelting(@NotNull RecipeOutput recipeOutput, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult,

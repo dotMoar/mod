@@ -6,6 +6,11 @@
   "item.skyrain.wand" : "Wand",
   "item.skyrain.radish" : "Radish",
 
+  "item.skyrain.monolith_axe": "Monolith axe",
+  "item.skyrain.monolith_pickaxe": "Monolith pickaxe",
+  "item.skyrain.monolith_shovel": "Monolith shovel",
+  "item.skyrain.monolith_hoe": "Monolith hoe",
+
   "item.skyrain.frost_fire" : "Frost Fire",
   "item.skyrain.starlight_ashes" : "Starlight Ashes",
 
@@ -19,7 +24,9 @@
   "block.skyrain.monolith_pressure" : "Monolith pressure",
   "block.skyrain.monolith_stair" : "Monolith stair",
   "block.skyrain.monolith_slab" : "Monolith slab",
-  "block.skyrain.magic_block" : "Magic Block block",
+  "block.skyrain.magic_block" : "Magic Block",
+  "block.skyrain.monolith_lamp" : "Magic Lamp",
+
 
   "creativetab.skyrain.sky": "SkyRain Items",
 

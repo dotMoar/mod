@@ -2,6 +2,7 @@ package dev._83080441.skyrain.datagen;
 
 import dev._83080441.skyrain.SkyRain;
 import dev._83080441.skyrain.block.ModBlocks;
+import dev._83080441.skyrain.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -20,12 +21,26 @@ public class ModBlockTagProvider extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(ModBlocks.CINNABAR_BLOCK.get());
+                .add(ModBlocks.CINNABAR_BLOCK.get())
+                .add(ModBlocks.MONOLITH_LAMP.get());
+
 
         tag(BlockTags.FENCES).add(ModBlocks.MONOLITH_FENCE.get());
         tag(BlockTags.FENCE_GATES).add(ModBlocks.MONOLITH_FENCE_GATE.get());
         tag(BlockTags.WALLS).add(ModBlocks.MONOLITH_WALL.get());
 
+        tag(BlockTags.NEEDS_DIAMOND_TOOL)
+                .add(ModBlocks.MONOLITH_LAMP.get());
+
+        tag(BlockTags.NEEDS_IRON_TOOL)
+                .add(ModBlocks.CINNABAR_BLOCK.get());
+
+        tag(ModTags.Blocks.NEEDS_MONOLITH_TOOLS)
+                .addTags(BlockTags.NEEDS_IRON_TOOL);
+
+        tag(ModTags.Blocks.INCORRECT_FOR_MONOLITH_TOOLS)
+                .addTags(BlockTags.INCORRECT_FOR_IRON_TOOL)
+                .remove(ModTags.Blocks.NEEDS_MONOLITH_TOOLS);
     }
 
 

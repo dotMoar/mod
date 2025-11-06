@@ -35,9 +35,11 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.MONOLITH_FENCE_GATE.get());
         dropSelf(ModBlocks.MONOLITH_WALL.get());
         dropSelf(ModBlocks.MONOLITH_PRESSURE.get());
+        dropSelf(ModBlocks.MONOLITH_TRAPDOOR.get());
+        dropSelf(ModBlocks.MONOLITH_LAMP.get());
 
         add(ModBlocks.MONOLITH_SLAB.get(), (block) -> createSlabItemTable(ModBlocks.MONOLITH_SLAB.get()));
-        add(ModBlocks.MONOLITH_DOOR.get(), (block) -> createSlabItemTable(ModBlocks.MONOLITH_DOOR.get()));
+        add(ModBlocks.MONOLITH_DOOR.get(), (block) -> createDoorTable(ModBlocks.MONOLITH_DOOR.get()));
 
         // Para la mena: suelta el ítem CINNABAR_ORE
         add(ModBlocks.CINNABAR_BLOCK.get(),

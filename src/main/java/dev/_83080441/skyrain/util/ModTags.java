@@ -10,6 +10,9 @@ import net.minecraft.world.level.block.Block;
 
 public class ModTags {
     public static class Blocks {
+        public static final TagKey<Block> NEEDS_MONOLITH_TOOLS = createTag("needs_mods_tools");
+        public static final TagKey<Block> INCORRECT_FOR_MONOLITH_TOOLS = createTag("incorrect_for_mod_tools");
+
         private static TagKey<Block> createTag(String name){
             return BlockTags.create(ResourceLocation.fromNamespaceAndPath(SkyRain.MOD_ID, name));
         }

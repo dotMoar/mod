@@ -1,6 +1,7 @@
 package dev._83080441.skyrain.item.custom;
 
 import dev._83080441.skyrain.block.ModBlocks;
+import dev._83080441.skyrain.block.components.ModDataComponents;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -50,6 +51,8 @@ public class Wand extends Item {
                 );
 
                 level.playSound(null, context.getClickedPos(), SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS);
+
+                context.getItemInHand().set(ModDataComponents.COORDINATES, context.getClickedPos());
             }
             return InteractionResult.SUCCESS;
         }
@@ -65,6 +68,11 @@ public class Wand extends Item {
             tooltipComponents.add(Component.translatable("tooltip.skyrain.wand"));
 
         }
+
+        if (stack.get(ModDataComponents.COORDINATES) != null) {
+            tooltipComponents.add(Component.literal("Last block changed at:" + stack.get(ModDataComponents.COORDINATES)));
+        }
+
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 }

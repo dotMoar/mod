@@ -3,9 +3,7 @@ package dev._83080441.skyrain.item;
 import dev._83080441.skyrain.SkyRain;
 import dev._83080441.skyrain.item.custom.Wand;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -17,14 +15,14 @@ public class ModItems {
 
     public static final DeferredItem<Item> CINNABAR_ORE = ITEMS.register("cinnabar_ore", () -> new Item(new Item.Properties()));
 
-    public static final DeferredItem<Item> DAGGER = ITEMS.register("dagger", () -> new Item(new Item.Properties()));
+    //public static final DeferredItem<Item> DAGGER = ITEMS.register("dagger", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> QUICKSILVER = ITEMS.register("quicksilver", () -> new Item(new Item.Properties()));
 
     //Custom Items
     public static final DeferredItem<Item> WAND = ITEMS.register("wand", () -> new Wand(new Item.Properties().durability(32)));
 
     //Custom Food
-    public static final DeferredItem<Item> RADISH = ITEMS.register("radish", () -> new Item(new Item.Properties().food(FoodItems.RADISH)){
+    public static final DeferredItem<Item> RADISH = ITEMS.register("radish", () -> new Item(new Item.Properties().food(FoodItems.RADISH)) {
         @Override
         public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
             tooltipComponents.add(Component.translatable("tooltip.skyrain.radish"));
@@ -41,5 +39,59 @@ public class ModItems {
     public static void register(IEventBus bus) {
         ITEMS.register(bus);
 
-    };
+    }
+
+    ;
+
+    //Utilizables
+
+    public static final DeferredItem<SwordItem> DAGGER = ITEMS.register(
+            "dagger",
+            () -> new SwordItem(ModTool.MONOLITH, new Item.Properties()
+                    .attributes(SwordItem.createAttributes(
+                            ModTool.MONOLITH,
+                            5,
+                            0))
+            )
+    );
+
+    public static final DeferredItem<PickaxeItem> MONOLITH_PICKAXE = ITEMS.register(
+            "monolith_pickaxe",
+            () -> new PickaxeItem(ModTool.MONOLITH, new Item.Properties()
+                    .attributes(PickaxeItem.createAttributes(
+                            ModTool.MONOLITH,
+                            5,
+                            0))
+            )
+    );
+
+    public static final DeferredItem<ShovelItem> MONOLITH_SHOVEL = ITEMS.register(
+            "monolith_shovel",
+            () -> new ShovelItem(ModTool.MONOLITH, new Item.Properties()
+                    .attributes(ShovelItem.createAttributes(
+                            ModTool.MONOLITH,
+                            5,
+                            0))
+            )
+    );
+
+    public static final DeferredItem<AxeItem> MONOLITH_AXE = ITEMS.register(
+            "monolith_axe",
+            () -> new AxeItem(ModTool.MONOLITH, new Item.Properties()
+                    .attributes(AxeItem.createAttributes(
+                            ModTool.MONOLITH,
+                            5,
+                            0))
+            )
+    );
+
+    public static final DeferredItem<HoeItem> MONOLITH_HOE = ITEMS.register(
+            "monolith_hoe",
+            () -> new HoeItem(ModTool.MONOLITH, new Item.Properties()
+                    .attributes(HoeItem.createAttributes(
+                            ModTool.MONOLITH,
+                            5,
+                            0))
+            )
+    );
 }

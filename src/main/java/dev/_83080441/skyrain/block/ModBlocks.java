@@ -2,6 +2,7 @@ package dev._83080441.skyrain.block;
 
 import dev._83080441.skyrain.SkyRain;
 import dev._83080441.skyrain.block.custom.MagicBlock;
+import dev._83080441.skyrain.block.custom.MonolithLamp;
 import dev._83080441.skyrain.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -64,17 +65,17 @@ public class ModBlocks {
                             .requiresCorrectToolForDrops()
                             .explosionResistance(3600000.0F)
                             .sound(SoundType.FUNGUS)
-                    )
+            )
     );
 
     //Slab
     public static final DeferredBlock<SlabBlock> MONOLITH_SLAB = registerBlock("monolith_slab",
             () -> new SlabBlock(BlockBehaviour.Properties
-                            .of()
-                            .strength(-1.0F, 3600000.0F)
-                            .requiresCorrectToolForDrops()
-                            .explosionResistance(3600000.0F)
-                            .sound(SoundType.FUNGUS)
+                    .of()
+                    .strength(-1.0F, 3600000.0F)
+                    .requiresCorrectToolForDrops()
+                    .explosionResistance(3600000.0F)
+                    .sound(SoundType.FUNGUS)
             )
     );
 
@@ -82,11 +83,11 @@ public class ModBlocks {
     public static final DeferredBlock<PressurePlateBlock> MONOLITH_PRESSURE = registerBlock("monolith_pressure",
             () -> new PressurePlateBlock(BlockSetType.IRON,
                     BlockBehaviour.Properties
-                    .of()
-                    .strength(-1.0F, 3600000.0F)
-                    .requiresCorrectToolForDrops()
-                    .explosionResistance(3600000.0F)
-                    .sound(SoundType.FUNGUS)
+                            .of()
+                            .strength(-1.0F, 3600000.0F)
+                            .requiresCorrectToolForDrops()
+                            .explosionResistance(3600000.0F)
+                            .sound(SoundType.FUNGUS)
             )
     );
 
@@ -106,11 +107,11 @@ public class ModBlocks {
     //Fence
     public static final DeferredBlock<FenceBlock> MONOLITH_FENCE = registerBlock("monolith_fence",
             () -> new FenceBlock(BlockBehaviour.Properties
-                            .of()
-                            .strength(-1.0F, 3600000.0F)
-                            .requiresCorrectToolForDrops()
-                            .explosionResistance(3600000.0F)
-                            .sound(SoundType.FUNGUS)
+                    .of()
+                    .strength(-1.0F, 3600000.0F)
+                    .requiresCorrectToolForDrops()
+                    .explosionResistance(3600000.0F)
+                    .sound(SoundType.FUNGUS)
             )
     );
 
@@ -118,11 +119,11 @@ public class ModBlocks {
     public static final DeferredBlock<FenceGateBlock> MONOLITH_FENCE_GATE = registerBlock("monolith_fence_gate",
             () -> new FenceGateBlock(WoodType.BAMBOO,
                     BlockBehaviour.Properties
-                    .of()
-                    .strength(-1.0F, 3600000.0F)
-                    .requiresCorrectToolForDrops()
-                    .explosionResistance(3600000.0F)
-                    .sound(SoundType.FUNGUS)
+                            .of()
+                            .strength(-1.0F, 3600000.0F)
+                            .requiresCorrectToolForDrops()
+                            .explosionResistance(3600000.0F)
+                            .sound(SoundType.FUNGUS)
             )
     );
 
@@ -152,7 +153,7 @@ public class ModBlocks {
     );
 
     //Trapdoor
-    public static final DeferredBlock<TrapDoorBlock> MONOLITH_TRAP_DOOR = registerBlock("monolith_trap_door",
+    public static final DeferredBlock<TrapDoorBlock> MONOLITH_TRAPDOOR = registerBlock("monolith_trapdoor",
             () -> new TrapDoorBlock(BlockSetType.BAMBOO,
                     BlockBehaviour.Properties
                             .of()
@@ -163,6 +164,14 @@ public class ModBlocks {
                             .noOcclusion()
             )
     );
+
+    //Lampara
+    public static final DeferredBlock<Block> MONOLITH_LAMP = registerBlock("monolith_lamp",
+            () -> new MonolithLamp(BlockBehaviour.Properties.of()
+                    .strength(2f)
+                    .requiresCorrectToolForDrops()
+                    .lightLevel(state ->state.getValue(MonolithLamp.CLICK) ? 15 : 0)
+            ));
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
