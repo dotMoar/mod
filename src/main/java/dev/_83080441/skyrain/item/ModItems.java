@@ -1,6 +1,7 @@
 package dev._83080441.skyrain.item;
 
 import dev._83080441.skyrain.SkyRain;
+import dev._83080441.skyrain.item.custom.Hammer;
 import dev._83080441.skyrain.item.custom.Wand;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
@@ -93,5 +94,39 @@ public class ModItems {
                             5,
                             0))
             )
+    );
+
+    public static final DeferredItem<Hammer> HAMMER = ITEMS.register(
+            "hammer",
+            () -> new Hammer(ModTool.MONOLITH, new Item.Properties()
+                    .attributes(PickaxeItem.createAttributes(
+                            ModTool.MONOLITH,
+                            7f,
+                            -5
+                    )))
+    );
+
+    public static final DeferredItem<ArmorItem> MONOLITH_HELMET = ITEMS.register(
+            "monolith_helmet",
+            () -> new ArmorItem(ModArmorMaterials.MONOLITH_ARMOR_MATERIAL, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(99)))
+    );
+
+    public static final DeferredItem<ArmorItem> MONOLITH_CHESTPLATE = ITEMS.register(
+            "monolith_chestplate",
+            () -> new ArmorItem(ModArmorMaterials.MONOLITH_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(99)))
+    );
+
+    public static final DeferredItem<ArmorItem> MONOLITH_LEGGINS = ITEMS.register(
+            "monolith_leggins",
+            () -> new ArmorItem(ModArmorMaterials.MONOLITH_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(99)))
+    );
+
+    public static final DeferredItem<ArmorItem> MONOLITH_BOOTS = ITEMS.register(
+            "monolith_boots",
+            () -> new ArmorItem(ModArmorMaterials.MONOLITH_ARMOR_MATERIAL, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(99)))
     );
 }

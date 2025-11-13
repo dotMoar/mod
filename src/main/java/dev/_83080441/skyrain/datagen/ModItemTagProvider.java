@@ -39,5 +39,12 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
         tag(ItemTags.PICKAXES)
                 .add(ModItems.MONOLITH_PICKAXE.get());
+
+        tag(ItemTags.TRIMMABLE_ARMOR)
+                .add(ModItems.MONOLITH_HELMET.get())
+                .add(ModItems.MONOLITH_CHESTPLATE.get())
+                .add(ModItems.MONOLITH_LEGGINS.get())
+                .add(ModItems.MONOLITH_BOOTS.get());
+
     }
 }

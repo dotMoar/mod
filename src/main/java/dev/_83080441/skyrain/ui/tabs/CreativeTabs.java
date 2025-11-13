@@ -55,6 +55,12 @@ public class CreativeTabs {
                         output.accept(ModItems.MONOLITH_SHOVEL);
                         output.accept(ModItems.MONOLITH_PICKAXE);
                         output.accept(ModItems.MONOLITH_HOE);
+                        output.accept(ModItems.HAMMER);
+
+                        output.accept(ModItems.MONOLITH_CHESTPLATE);
+                        output.accept(ModItems.MONOLITH_LEGGINS);
+                        output.accept(ModItems.MONOLITH_BOOTS);
+                        output.accept(ModItems.MONOLITH_HELMET);
 
                     })
                     .build()
